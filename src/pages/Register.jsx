@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import styles from '../styles/forms.module.css';
+
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebaseConfig';
 
@@ -21,22 +23,25 @@ export default function Register() {
     }
 
     return (
-        <>
-            <form onSubmit={registerUser}>
-                <input
-                    placeholder='E-mail'
-                    type='email'
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                />
-                <input
-                    placeholder='Password'
-                    type='password'
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                />
-                <button>Register</button>
+        <div className={styles.containerGeral}>
+            <form onSubmit={registerUser} className={styles.container}>
+                <h1 className={styles.text}>REGISTER</h1>
+                    <input
+                        placeholder='E-mail'
+                        className={styles.input}
+                        type='email'
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                    />
+                    <input
+                        placeholder='Password'
+                        className={styles.input}
+                        type='password'
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                    />
+                <button className={styles.button}>Register</button>
             </form>
-        </>
+        </div>
     );
 }

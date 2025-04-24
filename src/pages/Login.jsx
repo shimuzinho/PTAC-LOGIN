@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import styles from '../styles/forms.module.css';
+
 import { auth } from '../config/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -34,24 +36,26 @@ export default function Login () {
     }
 
     return (
-        <>
-            <h1>Login</h1>
-            <form onSubmit={loginUser}>
+        <div className={styles.containerGeral}>
+            <form onSubmit={loginUser} className={styles.container}>
+            <h1 className={styles.text}>Login</h1>
                 <input 
                     placeholder='E-mail'
+                    className={styles.input}
                     type='email'
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                 />
                 <input 
                     placeholder='Password'
+                    className={styles.input}
                     type='password'
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
-                <button>Login</button>
+                <button className={styles.button}>Login</button>
                 <Link to='/register'>Não tenho conta!</Link>
             </form>
-        </>
+        </div>
     )
 };
